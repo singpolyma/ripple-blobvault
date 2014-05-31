@@ -43,7 +43,7 @@ var create = function (req, res) {
             return
         }
     }
-    var keyresp = libutils.hasKeys(req.body,['encrypted_blobdecrypt_key','blob_id','username','auth_secret','data','email','address','hostlink','encrypted_secret']);
+    var keyresp = libutils.hasKeys(req.body,['encrypted_blobdecrypt_key','blob_id','username','auth_secret','data','address','encrypted_secret']);
     if (!keyresp.hasAllKeys) {
         response.json({result:'error', message:'Missing keys',missing:keyresp.missing}).status(400).pipe(res)
         return
@@ -128,10 +128,10 @@ var create = function (req, res) {
             blobId:blobId,
             address:req.body.address,
             username:username,
-            emailVerified:false,
-            email:req.body.email,
-            emailToken:libutils.generateToken(),
-            hostlink : req.body.hostlink,
+            //emailVerified:false,
+            //email:req.body.email,
+            //emailToken:libutils.generateToken(),
+            //hostlink : req.body.hostlink,
             encrypted_secret:req.body.encrypted_secret
         };
         // if we reached here, we are either unfunded but within limit cap
@@ -142,7 +142,7 @@ var create = function (req, res) {
                 lib.done();
                 return;
             }
-            email.send({email:params.email,hostlink:params.hostlink,token:params.emailToken,name:username});
+            //email.send({email:params.email,hostlink:params.hostlink,token:params.emailToken,name:username});
             response.json({result:'success'}).status(201).pipe(res)
             // if account is not funded we set add towards the daily limit
             if (!lib.get('isFunded'))

@@ -28,13 +28,13 @@ app.use(cors());
 
 // JSON handlers
 app.post('/v1/user', ecdsa.middleware, api.blob.create);
-app.post('/v1/user/email', limiter.check, ecdsa.middleware, api.user.emailChange);
-app.post('/v1/user/email/resend', limiter.check, api.user.emailResend);
+//app.post('/v1/user/email', limiter.check, ecdsa.middleware, api.user.emailChange);
+//app.post('/v1/user/email/resend', limiter.check, api.user.emailResend);
 app.post('/v1/user/:username', guard.locked, ecdsa.middleware, api.user.rename);
 
 app.delete('/v1/user', guard.locked, hmac.middleware, api.blob.delete);
 app.get('/v1/user/:username', api.user.get);
-app.get('/v1/user/:username/verify/:token', api.user.verify);
+//app.get('/v1/user/:username/verify/:token', api.user.verify);
 
 // JSON handlers
 app.get('/v1/blob/:blob_id', api.blob.get);
@@ -60,6 +60,7 @@ try {
   console.log("Could not launch SSL server: " + (e.stack ? e.stack : e.toString()));
 }
 
+/*
 var Campaign = require('./emailcampaign');
 var emailCampaign = new Campaign(store.db,config);
 emailCampaign.probe_subscribe(function(data) {
@@ -71,6 +72,7 @@ emailCampaign.probe_subscribe(function(data) {
 emailCampaign.start(function(){
     console.log("Email campaign ready");
 })
+*/
 
 process.on('SIGTERM',function() {
     console.log("caught sigterm");

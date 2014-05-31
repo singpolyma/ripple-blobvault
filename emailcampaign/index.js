@@ -1,3 +1,4 @@
+/*
 var RL = require('ripple-lib');
 var QL = require('queuelib');
 var eclib = require('./lib')
@@ -199,3 +200,4 @@ var Campaign = function(db,config) {
 };
 
 module.exports = exports = Campaign;
+*/

@@ -26,7 +26,7 @@ var getUserInfo = function(username, res) {
             obj.exists = resp.exists;
             obj.username = resp.username,
             obj.address = resp.address,
-            obj.emailVerified = resp.emailVerified,
+            //obj.emailVerified = resp.emailVerified,
 
             obj.reserved = config.reserved[normalized_username] || false;
 
@@ -49,7 +49,7 @@ var getUserInfo = function(username, res) {
                     obj.exists = true;
                     obj.username = row.username,
                     obj.address = row.address,
-                    obj.emailVerified = row.email_verified,
+                    //obj.emailVerified = row.email_verified,
                     response.json(obj).pipe(res)
                 } else {
                     obj.exists = false;

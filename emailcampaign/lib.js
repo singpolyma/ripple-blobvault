@@ -1,3 +1,4 @@
+/*
 var RL = require('ripple-lib');
 var hyperglue = require('hyperglue');
 var config = require('../config');
@@ -79,3 +80,4 @@ exports.send = function(params) {
         console.log(err || message);
     });
 }
+*/
